@@ -1,0 +1,24 @@
+services:
+  scraper:
+    build: .
+    image: gmaps-lead-scraper:latest
+    # Chromium needs more than the default 64MB of shared memory or tabs crash.
+    shm_size: "2gb"
+    volumes:
+      # Host folder `results` holds the same files as local `output/`
+      # (CSVs, XLSX, log, progress, checkpoints).
+      - ./results:/app/output
+    environment:
+      # There is no TTY in the container, so the setup wizard cannot run and
+      # the dashboard falls back to plain logs automatically. Set the target
+      # here instead of editing the command.
+      SCRAPER_CITY: "Austin TX"
+      SCRAPER_DEPTH: "areas"
+      # SCRAPER_CATEGORIES: "plumbers,electricians,roofing"
+      # SCRAPER_PROXY: "http://user:pass@host:port"
+      # SCRAPER_MIN_RATING: "4.0"
+    # Override for one-off runs, e.g.:
+    #   docker compose run --rm scraper python main.py --city Lahore --depth city -y
+    command: ["python", "main.py", "--headless", "-y"]
+    stdin_open: false
+    tty: false

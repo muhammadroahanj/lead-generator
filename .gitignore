@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Environment variables
+.env
+*.env
+
+# Scraper output (contains lead data — do not commit)
+output/
+results/
+out_*/
+
+# Playwright browser binaries
+playwright-browsers/
+.playwright/
+.playwright-browsers/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Local AI assistant configuration
+.agents/
+.claude/
+.codex/
+AGENTS.md
+CLAUDE.md
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
